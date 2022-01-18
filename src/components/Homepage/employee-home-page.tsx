@@ -1,9 +1,9 @@
-import { Employee } from '../../dtos/dtos';
+import { User } from '../../dtos/dtos';
 import ReimbursementSubmit from '../Reimbursement-Submit/reimbursement-submit';
 import ReimbursementViewer from '../Reimbursement-Viewer/reimbursement-viewer';
 
 export default function EmployeeHomePage(props: {
-  employee: Employee;
+  employee: User;
   updateEmployee: Function;
 }) {
   if (props.employee.isManager) {
@@ -19,13 +19,11 @@ export default function EmployeeHomePage(props: {
     <>
       <h1>Employee Home Page </h1>
 
-      <p>First Name: {props.employee.fname}</p>
-
-      <p>Last Name: {props.employee.lname}</p>
+      <p>Welcome {props.employee.name}</p>
 
       <p>Reimbursements: </p>
 
-      <p>Department: {props.employee.department}</p>
+      <p>Department: </p>
 
       <ReimbursementSubmit />
     </>

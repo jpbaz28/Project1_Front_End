@@ -4,18 +4,17 @@ export const employeeSlice = createSlice({
   name: 'employee',
   initialState: {
     value: {
-      id: '',
-      fname: 'Freddy',
-      lname: 'Mercury',
-      username: '',
-      password: '',
+      id: sessionStorage.getItem('id') ?? '',
+      name: sessionStorage.getItem('name') ?? '',
+      isAuthenticated: sessionStorage.getItem('isAunthenticated')
+        ? true
+        : false,
       reimburseAccount: [],
-      isManager: null,
-      department: 'Music',
+      isManager: sessionStorage.getItem('isManager') ? true : false,
     },
   },
   reducers: {
-    loginState: (state, action) => {
+    updateState: (state, action) => {
       state.value = action.payload;
     },
   },
@@ -70,6 +69,6 @@ export const employeeSlice = createSlice({
 
 export const userSelector = (state) => state.user;
 
-export const { loginState } = employeeSlice.actions;
+export const actions = employeeSlice.actions;
 
 export default employeeSlice.reducer;

@@ -6,37 +6,37 @@ export default function LoginPage(props: { updateUser: Function }) {
 
   async function login() {
     const loginPayload = {
-      username: usernameInput.current.value,
-      password: passwordInput.current.value,
+      username: usernameInput.current?.value ?? '',
+      password: passwordInput.current?.value ?? '',
     };
 
     const response = await fetch('http://localhost:5000/login', {
       method: 'PATCH',
-      body: JSON.stringify(loginPayload),
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(loginPayload),
     });
 
     const user = await response.json();
+    const id: string = user.id;
+    const isManager: boolean = user.isManager ? true : false;
+    const fullname = `${user.fname} ${user.lname}`;
+    const authenticated: boolean = true;
+
     props.updateUser({
-      username: user.username,
-      isManager: user.isManager,
+      name: fullname,
+      isManager: isManager,
+      isAuthenticated: authenticated,
     });
 
-    sessionStorage.setItem('id', user.id);
-    sessionStorage.setItem('fname', user.fname);
-    sessionStorage.setItem('lname', user.lname);
-    sessionStorage.setItem('username', user.username);
-    sessionStorage.setItem('password', user.password);
-    sessionStorage.setItem(
-      'reimburseAccount',
-      JSON.stringify(user.reimburseAccount)
-    );
-    sessionStorage.setItem('isManager', user.isManager);
-    sessionStorage.setItem('department', user.department);
+    sessionStorage.setItem('id', id);
+    sessionStorage.setItem('fullname', fullname);
+    sessionStorage.setItem('isAuthenticated', 'true');
+    if (isManager) {
+      sessionStorage.setItem('isManager', 'true');
+    }
   }
-
   return (
     <>
       <h1>Login Page</h1>

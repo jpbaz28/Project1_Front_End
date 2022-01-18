@@ -3,7 +3,7 @@ import { RootStateOrAny, useSelector } from 'react-redux';
 import { Employee } from '../../dtos/dtos';
 
 export default function ManagerHomepage(props: {
-  manager: Employee;
+  // manager: Employee;
   // updateUser: Function
 }) {
   // const employee: Employee = useSelector(
@@ -28,13 +28,13 @@ export default function ManagerHomepage(props: {
     <>
       <h1>Manager Home Page </h1>
 
-      <p>First Name: {props.manager.fname}</p>
+      <p>First Name: </p>
 
-      <p>Last Name: {props.manager.lname}</p>
+      <p>Last Name:</p>
 
       <p>Reimbursements: </p>
 
-      <p>Department: {props.manager.department}</p>
+      <p>Department:</p>
     </>
   );
 }

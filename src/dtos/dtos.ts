@@ -17,3 +17,10 @@ export interface Reimbursement {
   isApproved: boolean;
   isPending: boolean;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  isAuthenticated: string;
+  isManager: string;
+}
