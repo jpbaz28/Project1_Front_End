@@ -15,58 +15,58 @@ export const employeeSlice = createSlice({
     },
   },
   reducers: {
-    // loginState: (state, action) => {
-    //   state.value = action.payload;
-    // },
+    loginState: (state, action) => {
+      state.value = action.payload;
+    },
   },
   extraReducers: {
     // Extra reducer comes here
   },
 });
 
-export const loginEmp = createAsyncThunk(
-  'employees/login',
+// export const loginEmp = createAsyncThunk(
+//   'employees/login',
 
-  async ({ username, password }, thunkAPI) => {
-    try {
-      const response = await fetch(
-        'http://localhost:5000/login',
+//   async ({ username, password }, thunkAPI) => {
+//     try {
+//       const response = await fetch(
+//         'http://localhost:5000/login',
 
-        {
-          method: 'PATCH',
+//         {
+//           method: 'PATCH',
 
-          headers: {
-            Accept: 'application/json',
+//           headers: {
+//             Accept: 'application/json',
 
-            'Content-Type': 'application/json',
-          },
+//             'Content-Type': 'application/json',
+//           },
 
-          body: JSON.stringify({
-            username,
+//           body: JSON.stringify({
+//             username,
 
-            password,
-          }),
-        }
-      );
+//             password,
+//           }),
+//         }
+//       );
 
-      let data = await response.json();
+//       let data = await response.json();
 
-      console.log('response', data);
+//       console.log('response', data);
 
-      if (response.status === 200) {
-        localStorage.setItem('token', data.token);
+//       if (response.status === 200) {
+//         localStorage.setItem('token', data.token);
 
-        return data;
-      } else {
-        return thunkAPI.rejectWithValue(data);
-      }
-    } catch (e) {
-      console.log('Error', e.response.data);
+//         return data;
+//       } else {
+//         return thunkAPI.rejectWithValue(data);
+//       }
+//     } catch (e) {
+//       console.log('Error', e.response.data);
 
-      thunkAPI.rejectWithValue(e.response.data);
-    }
-  }
-);
+//       thunkAPI.rejectWithValue(e.response.data);
+//     }
+//   }
+// );
 
 export const userSelector = (state) => state.user;
 

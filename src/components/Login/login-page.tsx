@@ -1,12 +1,8 @@
 import { useRef } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { loginState } from '../features/employee';
 
 export default function LoginPage(props: { updateUser: Function }) {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
-
-  // const dispatch = useDispatch();
 
   async function login() {
     const loginPayload = {
@@ -33,22 +29,12 @@ export default function LoginPage(props: { updateUser: Function }) {
     sessionStorage.setItem('lname', user.lname);
     sessionStorage.setItem('username', user.username);
     sessionStorage.setItem('password', user.password);
-    sessionStorage.setItem('reimburseAccount', user.reimburseAccount);
+    sessionStorage.setItem(
+      'reimburseAccount',
+      JSON.stringify(user.reimburseAccount)
+    );
     sessionStorage.setItem('isManager', user.isManager);
     sessionStorage.setItem('department', user.department);
-
-    // dispatch(
-    //   loginState({
-    //     id: user.id,
-    //     fname: user.fname,
-    //     lname: user.lname,
-    //     username: user.username,
-    //     password: user.password,
-    //     reimburseAccount: user.reimburseAccount,
-    //     isManager: user.isManager,
-    //     department: user.department,
-    //   })
-    // );
   }
 
   return (
