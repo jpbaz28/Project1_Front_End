@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import EmployeeHomePage from '../Homepage/employee-home-page';
 import LoginPage from '../Login/login-page';
 export default function App() {
@@ -10,8 +11,38 @@ export default function App() {
   });
 
   if (!user.isAuthenticated) {
-    return <LoginPage updateUser={setUser} />;
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path='/login' element={<LoginPage updateUser={setUser} />} />
+          <Route path='*' element={<Navigate to={'/login'} />} />
+        </Routes>
+      </BrowserRouter>
+    );
   } else {
-    return <EmployeeHomePage employee={user} updateEmployee={setUser} />;
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path='*'
+            element={
+              <EmployeeHomePage employee={user} updateEmployee={setUser} />
+            }
+          />
+          <Route
+            path='/employee'
+            element={
+              <EmployeeHomePage employee={user} updateEmployee={setUser} />
+            }
+          />
+          <Route
+            path='/manager'
+            element={
+              <EmployeeHomePage employee={user} updateEmployee={setUser} />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    );
   }
 }

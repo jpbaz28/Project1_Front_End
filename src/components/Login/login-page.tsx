@@ -1,8 +1,10 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage(props: { updateUser: Function }) {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
+  const navigate = useNavigate();
 
   async function login() {
     const loginPayload = {
@@ -35,6 +37,9 @@ export default function LoginPage(props: { updateUser: Function }) {
     sessionStorage.setItem('isAuthenticated', 'true');
     if (isManager) {
       sessionStorage.setItem('isManager', 'true');
+      navigate('/manager');
+    } else {
+      navigate('/employee');
     }
   }
   return (
@@ -45,7 +50,7 @@ export default function LoginPage(props: { updateUser: Function }) {
       <label htmlFor='usernameInput'>Username</label>
       <input ref={usernameInput} type='text' id='usernameInput' />
 
-      <label htmlFor='passwordInput'>Username</label>
+      <label htmlFor='passwordInput'>Password</label>
       <input ref={passwordInput} type='password' id='passwordInput' />
 
       <button onClick={login}>Login</button>
