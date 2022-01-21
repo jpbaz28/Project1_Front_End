@@ -1,15 +1,26 @@
 import { Reimbursement } from '../../dtos/dtos';
 
 export default function ReimbursementRow(props: Reimbursement) {
-  const { id, amount, date, comment, isApproved, isPending } = props;
+  const { id, amount, date, comment, isApproved, isPending, username } = props;
+  const milliseconds: number = Number(date) * 1000;
+  const dateObj = new Date(milliseconds);
   return (
     <tr>
-      <td>{id}</td>
+      <td>{username}</td>
       <td>${amount}</td>
-      <td>{new Date(date).toDateString()}</td>
+      <td>{dateObj.toLocaleDateString()}</td>
       <td>{comment}</td>
-      <td>{isApproved}</td>
-      <td>{isPending}</td>
+      {isPending ? (
+        <>
+          <td>
+            <button>Approve</button> <button>Deny</button>
+          </td>
+        </>
+      ) : (
+        <>
+          <td>{isApproved ? 'Approved' : 'Denied'}</td>
+        </>
+      )}
     </tr>
   );
 }

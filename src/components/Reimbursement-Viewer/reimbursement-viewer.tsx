@@ -16,9 +16,13 @@ export default function ReimbursementViewer(props) {
     setReimburses(reimburses);
   }
 
-  // const reimburseRows = reimburses.map((r) => (
-  //   <ReimbursementRow key={r.id} {...r} />
-  // ));
+  useEffect(() => {
+    getAllReimbursements();
+  }, []);
+
+  const tableRows = reimburses.map((r) => (
+    <ReimbursementRow key={r.id} {...r} />
+  ));
   return (
     <>
       <h2>Reimbursements Viewer</h2>
@@ -30,15 +34,15 @@ export default function ReimbursementViewer(props) {
       <table>
         <thead>
           <tr>
-            <th>id</th>
+            <th>username</th>
             <th>amount</th>
             <th>date</th>
             <th>comment</th>
-            <th>approved?</th>
-            <th>pending</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
-        <tbody>{JSON.stringify(reimburses)}</tbody>
+        <tbody>{tableRows}</tbody>
       </table>
     </>
   );

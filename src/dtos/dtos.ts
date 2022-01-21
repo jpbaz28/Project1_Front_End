@@ -16,6 +16,7 @@ export interface Reimbursement {
   comment: string;
   isApproved: boolean;
   isPending: boolean;
+  username: string;
 }
 
 export interface User {
