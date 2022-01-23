@@ -3,7 +3,7 @@ import { Reimbursement } from '../../dtos/dtos';
 import ReimbursementRow from '../Reimbursement-Row/reimbursement-row';
 
 export default function ReimbursementViewer(props) {
-  const [reimburses, setReimburses] = useState(null);
+  const [reimburses, setReimburses] = useState([]);
 
   async function getAllReimbursements() {
     const response: Response = await fetch(
@@ -21,7 +21,8 @@ export default function ReimbursementViewer(props) {
   }, []);
 
   const tableRows = reimburses.map((r) => (
-    <ReimbursementRow key={r.id} {...r} />
+    <ReimbursementRow key={r.id} reim={{ ...r }} setReimburse={setReimburses} />
+    // setReimburse={setReimburses}
   ));
   return (
     <>
@@ -30,7 +31,6 @@ export default function ReimbursementViewer(props) {
       <select name='user-select' id='user-select'>
         Select User
       </select>
-      <button onClick={getAllReimbursements}>Get All Reimbursements</button>
       <table>
         <thead>
           <tr>
