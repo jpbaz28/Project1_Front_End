@@ -10,6 +10,7 @@ export default function EmployeeHomePage(props: {
     return (
       <>
         <h1>Manager Page</h1>
+        <h2>Welcome {props.employee.name}</h2>
         <ReimbursementViewer />
       </>
     );
@@ -21,11 +22,7 @@ export default function EmployeeHomePage(props: {
 
       <p>Welcome {props.employee.name}</p>
 
-      <p>Reimbursements: </p>
-
-      <p>Department: </p>
-
-      <ReimbursementSubmit />
+      <ReimbursementSubmit emp={props.employee} />
     </>
   );
 }

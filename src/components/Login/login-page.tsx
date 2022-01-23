@@ -24,6 +24,7 @@ export default function LoginPage(props: { updateUser: Function }) {
     const id: string = user.id;
     const isManager: boolean = user.isManager ? true : false;
     const fullname = `${user.fname} ${user.lname}`;
+    const username = user.username;
     const authenticated: boolean = true;
 
     props.updateUser({
@@ -35,6 +36,7 @@ export default function LoginPage(props: { updateUser: Function }) {
     sessionStorage.setItem('id', id);
     sessionStorage.setItem('fullname', fullname);
     sessionStorage.setItem('isAuthenticated', 'true');
+    sessionStorage.setItem('username', username);
     if (isManager) {
       sessionStorage.setItem('isManager', 'true');
       navigate('/manager');
@@ -46,7 +48,6 @@ export default function LoginPage(props: { updateUser: Function }) {
     <>
       <h1>Login Page</h1>
       <h3>Login Here</h3>
-
       <label htmlFor='usernameInput'>Username</label>
       <input ref={usernameInput} type='text' id='usernameInput' />
 

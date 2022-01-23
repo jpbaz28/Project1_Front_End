@@ -24,4 +24,5 @@ export interface User {
   name: string;
   isAuthenticated: string;
   isManager: string;
+  username: string;
 }

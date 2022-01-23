@@ -8,6 +8,7 @@ export default function App() {
     name: sessionStorage.getItem('fullname'),
     isAuthenticated: sessionStorage.getItem('isAuthenticated'),
     isManager: sessionStorage.getItem('isManager'),
+    username: sessionStorage.getItem('username'),
   });
 
   if (!user.isAuthenticated) {
