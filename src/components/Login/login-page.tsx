@@ -21,22 +21,24 @@ export default function LoginPage(props: { updateUser: Function }) {
     });
 
     const user = await response.json();
-    const id: string = user.id;
+    const userId: string = user.id;
     const isManager: boolean = user.isManager ? true : false;
     const fullname = `${user.fname} ${user.lname}`;
-    const username = user.username;
+    const uname = user.username;
     const authenticated: boolean = true;
 
     props.updateUser({
+      id: userId,
+      username: uname,
       name: fullname,
       isManager: isManager,
       isAuthenticated: authenticated,
     });
 
-    sessionStorage.setItem('id', id);
+    sessionStorage.setItem('id', userId);
     sessionStorage.setItem('fullname', fullname);
     sessionStorage.setItem('isAuthenticated', 'true');
-    sessionStorage.setItem('username', username);
+    sessionStorage.setItem('username', uname);
     if (isManager) {
       sessionStorage.setItem('isManager', 'true');
       navigate('/manager');

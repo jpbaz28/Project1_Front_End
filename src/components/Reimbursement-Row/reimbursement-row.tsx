@@ -31,7 +31,7 @@ export default function ReimbursementRow(props: {
     <tr>
       <td>{username}</td>
       <td>${amount}</td>
-      <td>{dateObj.toLocaleDateString()}</td>
+      <td>{dateObj.toLocaleString()}</td>
       <td>{comment}</td>
       {isPending ? (
         <>

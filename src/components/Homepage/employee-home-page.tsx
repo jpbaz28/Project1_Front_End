@@ -1,4 +1,5 @@
 import { User } from '../../dtos/dtos';
+import EmployeeReimViewer from '../Employee-Reim-Viewer/employee-reim-viewer';
 import ReimbursementSubmit from '../Reimbursement-Submit/reimbursement-submit';
 import ReimbursementViewer from '../Reimbursement-Viewer/reimbursement-viewer';
 
@@ -23,6 +24,10 @@ export default function EmployeeHomePage(props: {
       <p>Welcome {props.employee.name}</p>
 
       <ReimbursementSubmit emp={props.employee} />
+
+      <div>
+        <EmployeeReimViewer emp={props.employee} />
+      </div>
     </>
   );
 }

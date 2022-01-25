@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Reimbursement } from '../../dtos/dtos';
+import { Reimbursement, User } from '../../dtos/dtos';
 import ReimbursementRow from '../Reimbursement-Row/reimbursement-row';
 
-export default function ReimbursementViewer(props) {
+export default function EmployeeReimViewer(props: { emp: User }) {
   const [reimburses, setReimburses] = useState([]);
 
-  async function getAllReimbursements() {
+  async function getReimbursementsForEmp() {
     const response: Response = await fetch(
-      'http://localhost:5000/reimbursements',
+      `http://localhost:5000/reimbursements/${props.emp.username}`,
       {
         method: 'GET',
       }
@@ -17,20 +17,16 @@ export default function ReimbursementViewer(props) {
   }
 
   useEffect(() => {
-    getAllReimbursements();
+    getReimbursementsForEmp();
   }, []);
 
   const tableRows = reimburses.map((r) => (
     <ReimbursementRow key={r.id} reim={{ ...r }} setReimburse={setReimburses} />
-    // setReimburse={setReimburses}
   ));
+
   return (
     <>
-      <h2>Reimbursements Viewer</h2>
-      <label htmlFor='user-select'>Select User:</label>
-      <select name='user-select' id='user-select'>
-        Select User
-      </select>
+      <h1>Reimbursements For: {props.emp.username}</h1>
       <table>
         <thead>
           <tr>

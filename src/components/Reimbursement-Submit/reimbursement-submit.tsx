@@ -4,18 +4,22 @@ import { User } from '../../dtos/dtos';
 export default function ReimbursementSubmit(props: { emp: User }) {
   const amountInput = useRef(null);
   const descInput = useRef(null);
+  // const [amountInput, setAmount] = useState(null);
+  // const [descInput, setDesc] = useState(null);
 
-  const reimbursePayload = {
-    username: props.emp.username,
-    id: '',
-    amount: amountInput.current?.value ?? 0,
-    date: String(Date.now()),
-    comment: descInput.current?.value ?? '',
-    isApproved: false,
-    isPending: true,
-  };
+  async function submitReimbursement(e) {
+    e.preventDefault();
 
-  async function submitReimbursement() {
+    const reimbursePayload = {
+      username: props.emp.username,
+      id: '',
+      amount: amountInput.current?.value ?? NaN,
+      date: String(Date.now()),
+      comment: descInput.current?.value ?? '',
+      isApproved: false,
+      isPending: true,
+    };
+
     const response: Response = await fetch(
       `http://localhost:5000/employees/${props.emp.id}/reimbursements`,
       {
@@ -31,13 +35,15 @@ export default function ReimbursementSubmit(props: { emp: User }) {
   return (
     <>
       <h2>Submit a Reimbursement</h2>
-      <label htmlFor='amountInput'>Amount</label>
-      <input ref={amountInput} type='number' min={1} id='amountInput' />
-
-      <label htmlFor='descInput'>Description</label>
-      <input ref={descInput} type='text' id='amountInput' />
-
-      <button onClick={submitReimbursement}>Submit Reimbursement</button>
+      <form onSubmit={submitReimbursement}>
+        <label htmlFor='amountInput'>Amount</label>
+        <input type='number' id='amountInput' ref={amountInput} />
+        {/* ref={amountInput} */}
+        <label htmlFor='descInput'>Description</label>
+        <input type='text' id='amountInput' ref={descInput} />
+        {/* ref={descInput} onChange={(e) => setDesc(e.target.value)} */}
+        <button type='submit'>Submit Reimbursement</button>
+      </form>
     </>
   );
 }
