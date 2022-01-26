@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import ExpenditureDetails from '../Expenditure-Details/expenditure-details';
 import EmployeeHomePage from '../Homepage/employee-home-page';
 import LoginPage from '../Login/login-page';
+
 export default function App() {
   const [user, setUser] = useState({
     id: sessionStorage.getItem('id'),
@@ -41,6 +43,10 @@ export default function App() {
             element={
               <EmployeeHomePage employee={user} updateEmployee={setUser} />
             }
+          />
+          <Route
+            path='/manager/expenditureDetails'
+            element={<ExpenditureDetails />}
           />
         </Routes>
       </BrowserRouter>

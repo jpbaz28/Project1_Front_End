@@ -18,6 +18,7 @@ export default function EmployeeReimViewer(props: { emp: User }) {
 
   useEffect(() => {
     getReimbursementsForEmp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const tableRows = reimburses.map((r) => (
