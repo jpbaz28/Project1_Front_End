@@ -14,7 +14,7 @@ export default function ReimbursementSubmit(props: { emp: User }) {
       username: props.emp.username,
       id: '',
       amount: amountInput.current?.value ?? NaN,
-      date: String(Date.now()),
+      date: String(Date.now() / 1000),
       comment: descInput.current?.value ?? '',
       isApproved: false,
       isPending: true,
@@ -38,10 +38,10 @@ export default function ReimbursementSubmit(props: { emp: User }) {
       <form onSubmit={submitReimbursement}>
         <label htmlFor='amountInput'>Amount</label>
         <input type='number' id='amountInput' ref={amountInput} />
-        {/* ref={amountInput} */}
+
         <label htmlFor='descInput'>Description</label>
-        <input type='text' id='amountInput' ref={descInput} />
-        {/* ref={descInput} onChange={(e) => setDesc(e.target.value)} */}
+        <input type='text' id='descInput' ref={descInput} />
+
         <button type='submit'>Submit Reimbursement</button>
       </form>
     </>

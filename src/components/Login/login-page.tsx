@@ -1,12 +1,16 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './login.css';
+import revatureLogo from './revature-logo.png';
 
 export default function LoginPage(props: { updateUser: Function }) {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
   const navigate = useNavigate();
 
-  async function login() {
+  async function login(e) {
+    e.preventDefault();
+
     const loginPayload = {
       username: usernameInput.current?.value ?? '',
       password: passwordInput.current?.value ?? '',
@@ -48,15 +52,41 @@ export default function LoginPage(props: { updateUser: Function }) {
   }
   return (
     <>
-      <h1>Login Page</h1>
-      <h3>Login Here</h3>
-      <label htmlFor='usernameInput'>Username</label>
-      <input ref={usernameInput} type='text' id='usernameInput' />
-
-      <label htmlFor='passwordInput'>Password</label>
-      <input ref={passwordInput} type='password' id='passwordInput' />
-
-      <button onClick={login}>Login</button>
+      <div>
+        <img
+          src={revatureLogo}
+          alt='Revature-Logo'
+          width={'200'}
+          height={'100'}
+        />
+      </div>
+      <div className='login-wrapper'>
+        <div className='login-title'>
+          <h2>Welcome, Log in Here!</h2>
+        </div>
+        <form onSubmit={login}>
+          <div>
+            <label htmlFor='usernameInput'>Username</label>
+            <input ref={usernameInput} type='text' className='username-input' />
+          </div>
+          <div className='passwordInput'>
+            <label htmlFor='passwordInput'>Password</label>
+            <input
+              ref={passwordInput}
+              type='password'
+              className='password-input'
+            />
+          </div>
+          <div className='login-btn'>
+            <button type='reset' className='reset-btn'>
+              Clear
+            </button>
+            <button type='submit' className='submit-btn'>
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
