@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto&family=Rock+3D&display=swap');
+
+.approve-btn {
+  font-family: 'Roboto', sans-serif;
+  width: 105px;
+  margin-right: 6px;
+  background-color: rgb(184, 209, 184);
+  border-color: green;
+  border-style: ridge;
+  box-shadow: 3px 3px rgb(0, 19, 0);
+}
+
+.deny-btn {
+  font-family: 'Roboto', sans-serif;
+  width: 105px;
+  margin-left: 6px;
+  background-color: rgb(229, 186, 186);
+  border-color: red;
+  border-style: ridge;
+  box-shadow: 3px 3px rgb(49, 0, 0);
+}

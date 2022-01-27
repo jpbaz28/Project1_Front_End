@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import ExpenditureDetails from '../Expenditure-Details/expenditure-details';
-import EmployeeHomePage from '../Homepage/employee-home-page';
+import Homepage from '../Homepage/homepage';
 import LoginPage from '../Login/login-page';
 
 export default function App() {
@@ -28,21 +28,15 @@ export default function App() {
         <Routes>
           <Route
             path='*'
-            element={
-              <EmployeeHomePage employee={user} updateEmployee={setUser} />
-            }
+            element={<Homepage employee={user} updateEmployee={setUser} />}
           />
           <Route
             path='/employee'
-            element={
-              <EmployeeHomePage employee={user} updateEmployee={setUser} />
-            }
+            element={<Homepage employee={user} updateEmployee={setUser} />}
           />
           <Route
             path='/manager'
-            element={
-              <EmployeeHomePage employee={user} updateEmployee={setUser} />
-            }
+            element={<Homepage employee={user} updateEmployee={setUser} />}
           />
           <Route
             path='/manager/expenditureDetails'

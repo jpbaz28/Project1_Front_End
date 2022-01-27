@@ -1,3 +1,5 @@
+import './logout-btn.css';
+
 export default function LogoutBtn() {
   function logout() {
     sessionStorage.clear();
@@ -6,7 +8,9 @@ export default function LogoutBtn() {
 
   return (
     <>
-      <button onClick={logout}>Logout</button>
+      <button onClick={logout} className='logout-btn'>
+        Logout
+      </button>
     </>
   );
 }

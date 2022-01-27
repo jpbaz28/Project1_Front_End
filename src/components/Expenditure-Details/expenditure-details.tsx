@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { backendAddress } from '../../dtos/backend-address';
 import { Employee } from '../../dtos/dtos';
 import LogoutBtn from '../Logout-Btn/logout-btn';
 
@@ -10,12 +11,9 @@ export default function ExpenditureDetails() {
   const navigate = useNavigate();
 
   async function getStats() {
-    const empResponse: Response = await fetch(
-      'http://localhost:5000/employees',
-      {
-        method: 'GET',
-      }
-    );
+    const empResponse: Response = await fetch(`${backendAddress}/employees`, {
+      method: 'GET',
+    });
 
     const employees: Employee[] = await empResponse.json();
 

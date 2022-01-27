@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { backendAddress } from '../../dtos/backend-address';
+import { Reimbursement } from '../../dtos/dtos';
 import './login.css';
 import revatureLogo from './revature-logo.png';
 
@@ -16,7 +18,7 @@ export default function LoginPage(props: { updateUser: Function }) {
       password: passwordInput.current?.value ?? '',
     };
 
-    const response = await fetch('http://localhost:5000/login', {
+    const response = await fetch(`${backendAddress}/login`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -30,6 +32,7 @@ export default function LoginPage(props: { updateUser: Function }) {
     const fullname = `${user.fname} ${user.lname}`;
     const uname = user.username;
     const authenticated: boolean = true;
+    const reimAccount: Reimbursement[] = user.reimburseAccount;
 
     props.updateUser({
       id: userId,
@@ -37,6 +40,7 @@ export default function LoginPage(props: { updateUser: Function }) {
       name: fullname,
       isManager: isManager,
       isAuthenticated: authenticated,
+      reimburseAccount: reimAccount,
     });
 
     sessionStorage.setItem('id', userId);
@@ -56,8 +60,8 @@ export default function LoginPage(props: { updateUser: Function }) {
         <img
           src={revatureLogo}
           alt='Revature-Logo'
-          width={'200'}
-          height={'100'}
+          width={'500'}
+          height={'200'}
         />
       </div>
       <div className='login-wrapper'>

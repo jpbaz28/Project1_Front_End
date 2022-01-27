@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
+import { backendAddress } from '../../dtos/backend-address';
 import { Reimbursement } from '../../dtos/dtos';
 import ReimbursementRow from '../Reimbursement-Row/reimbursement-row';
+import './reimbursement-viewer.css';
 
 export default function ReimbursementViewer(props) {
   const [reimburses, setReimburses] = useState([]);
 
   async function getAllReimbursements() {
-    const response: Response = await fetch(
-      'http://localhost:5000/reimbursements',
-      {
-        method: 'GET',
-      }
-    );
+    const response: Response = await fetch(`${backendAddress}/reimbursements`, {
+      method: 'GET',
+    });
     const reimburses: Reimbursement[] = await response.json();
     setReimburses(reimburses);
   }
@@ -26,24 +25,22 @@ export default function ReimbursementViewer(props) {
   ));
   return (
     <>
-      <h2>Reimbursements Viewer</h2>
-      <label htmlFor='user-select'>Select User:</label>
-      <select name='user-select' id='user-select'>
-        Select User
-      </select>
-      <table>
-        <thead>
-          <tr>
-            <th>username</th>
-            <th>amount</th>
-            <th>date/time</th>
-            <th>comment</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>{tableRows}</tbody>
-      </table>
+      <div className='reim-view-wrapper'>
+        <h2 className='reim-view-title'>Reimbursements Viewer</h2>
+
+        <table className='reim-table'>
+          <thead>
+            <tr>
+              <th className='reim-thead'>Username</th>
+              <th className='reim-thead'>Amount</th>
+              <th className='reim-thead'>Date</th>
+              <th className='reim-thead'>Comment</th>
+              <th className='reim-thead'>Approve/Deny</th>
+            </tr>
+          </thead>
+          <tbody>{tableRows}</tbody>
+        </table>
+      </div>
     </>
   );
 }

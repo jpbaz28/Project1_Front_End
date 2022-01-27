@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
+import { backendAddress } from '../../dtos/backend-address';
 import { Reimbursement, User } from '../../dtos/dtos';
-import ReimbursementRow from '../Reimbursement-Row/reimbursement-row';
+import EmpReimbursementRow from '../Reimbursement-Row/emp-reimbursement-row';
 
-export default function EmployeeReimViewer(props: { emp: User }) {
+export default function EmployeeReimViewer(props: {
+  emp: User;
+  updateEmployee: Function;
+}) {
   const [reimburses, setReimburses] = useState([]);
 
   async function getReimbursementsForEmp() {
     const response: Response = await fetch(
-      `http://localhost:5000/reimbursements/${props.emp.username}`,
+      `${backendAddress}/reimbursements/${props.emp.username}`,
       {
         method: 'GET',
       }
     );
-    const reimburses: Reimbursement[] = await response.json();
-    setReimburses(reimburses);
+    const reims: Reimbursement[] = await response.json();
+    setReimburses(reims);
   }
 
   useEffect(() => {
@@ -22,7 +26,7 @@ export default function EmployeeReimViewer(props: { emp: User }) {
   }, []);
 
   const tableRows = reimburses.map((r) => (
-    <ReimbursementRow key={r.id} reim={{ ...r }} setReimburse={setReimburses} />
+    <EmpReimbursementRow key={r.id} reim={{ ...r }} />
   ));
 
   return (
@@ -31,11 +35,11 @@ export default function EmployeeReimViewer(props: { emp: User }) {
       <table>
         <thead>
           <tr>
-            <th>username</th>
-            <th>amount</th>
-            <th>date/time</th>
-            <th>comment</th>
-            <th></th>
+            <th>Username</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Comment</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>

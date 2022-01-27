@@ -1,11 +1,10 @@
 import { useRef } from 'react';
+import { backendAddress } from '../../dtos/backend-address';
 import { User } from '../../dtos/dtos';
 
 export default function ReimbursementSubmit(props: { emp: User }) {
   const amountInput = useRef(null);
   const descInput = useRef(null);
-  // const [amountInput, setAmount] = useState(null);
-  // const [descInput, setDesc] = useState(null);
 
   async function submitReimbursement(e) {
     e.preventDefault();
@@ -21,15 +20,15 @@ export default function ReimbursementSubmit(props: { emp: User }) {
     };
 
     const response: Response = await fetch(
-      `http://localhost:5000/employees/${props.emp.id}/reimbursements`,
+      `${backendAddress}/employees/${props.emp.id}/reimbursements`,
       {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(reimbursePayload),
       }
     );
-    const reimburse = await response.json();
-    alert(`Submitted Reimbursement. ID is ${reimburse.id}`);
+    const emp = await response.json();
+    alert(`Submitted reimbursement for ${emp.username}`);
   }
 
   return (

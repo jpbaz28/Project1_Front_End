@@ -1,4 +1,6 @@
+import { backendAddress } from '../../dtos/backend-address';
 import { Reimbursement } from '../../dtos/dtos';
+import './reimbursement-row.css';
 
 export default function ReimbursementRow(props: {
   reim: Reimbursement;
@@ -11,7 +13,7 @@ export default function ReimbursementRow(props: {
 
   async function approveReimburse() {
     const response: Response = await fetch(
-      `http://localhost:5000/reimbursements/approve/${username}/${id}`,
+      `${backendAddress}/reimbursements/approve/${username}/${id}`,
       { method: 'PATCH', headers: { 'content-type': 'application/json' } }
     );
     const reimburses: Reimbursement[] = await response.json();
@@ -20,7 +22,7 @@ export default function ReimbursementRow(props: {
 
   async function denyReimburse() {
     const response: Response = await fetch(
-      `http://localhost:5000/reimbursements/deny/${username}/${id}`,
+      `${backendAddress}/reimbursements/deny/${username}/${id}`,
       { method: 'PATCH', headers: { 'content-type': 'application/json' } }
     );
     const reimburses: Reimbursement[] = await response.json();
@@ -36,9 +38,13 @@ export default function ReimbursementRow(props: {
       {isPending ? (
         <>
           <td>
-            <button onClick={approveReimburse}>Approve</button>
+            <button onClick={approveReimburse} className='approve-btn'>
+              Approve
+            </button>
             {/* onClick={approveReimburse} */}
-            <button onClick={denyReimburse}>Deny</button>
+            <button onClick={denyReimburse} className='deny-btn'>
+              Deny
+            </button>
           </td>
         </>
       ) : (
