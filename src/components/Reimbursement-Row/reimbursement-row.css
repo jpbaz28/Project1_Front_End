@@ -4,10 +4,14 @@
   font-family: 'Roboto', sans-serif;
   width: 105px;
   margin-right: 6px;
-  background-color: rgb(184, 209, 184);
-  border-color: green;
+  background-color: #cee5f2ff;
+  border-color: blue;
   border-style: ridge;
   box-shadow: 3px 3px rgb(0, 19, 0);
+}
+
+.approve-btn:hover {
+  background-color: dodgerblue;
 }
 
 .deny-btn {
@@ -18,4 +22,8 @@
   border-color: red;
   border-style: ridge;
   box-shadow: 3px 3px rgb(49, 0, 0);
+}
+
+.deny-btn:hover {
+  background-color: firebrick;
 }

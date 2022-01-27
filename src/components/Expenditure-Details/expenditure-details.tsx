@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { backendAddress } from '../../dtos/backend-address';
 import { Employee } from '../../dtos/dtos';
 import LogoutBtn from '../Logout-Btn/logout-btn';
+import './expenditure-details.css';
 
 export default function ExpenditureDetails() {
   const [average, setAverage] = useState(null);
@@ -66,11 +67,23 @@ export default function ExpenditureDetails() {
 
   return (
     <>
-      <h1>Expenditure Details Page</h1>
-      <h3>The employee with the most spending was: {highCostUser}</h3>
-      <h3>The average amount for submitted reimbursements was: ${average}</h3>
-      <LogoutBtn />
-      <button onClick={backHome}>Home Page</button>
+      <div className='exp-details-wrapper'>
+        <div className='exp-details-title'>
+          <h1>Expenditure Details Page</h1>
+        </div>
+        <div className='exp-details-body'>
+          <h3>The employee with the most spending was: {highCostUser}</h3>
+          <h3>
+            The average amount for submitted reimbursements was: ${average}
+          </h3>
+        </div>
+        <nav className='exp-details-navbar'>
+          <button onClick={backHome} className='home-btn'>
+            Home Page
+          </button>
+          <LogoutBtn />
+        </nav>
+      </div>
     </>
   );
 }

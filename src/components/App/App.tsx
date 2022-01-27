@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import EmployeeReimViewer from '../Employee-Reim-Viewer/employee-reim-viewer';
 import ExpenditureDetails from '../Expenditure-Details/expenditure-details';
 import Homepage from '../Homepage/homepage';
 import LoginPage from '../Login/login-page';
@@ -41,6 +42,10 @@ export default function App() {
           <Route
             path='/manager/expenditureDetails'
             element={<ExpenditureDetails />}
+          />
+          <Route
+            path='/employee/previousReimbursements'
+            element={<EmployeeReimViewer employee={user} />}
           />
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,52 @@
+.reim-submit-wrapper {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reim-submit-title {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  color: #cee5f2ff;
+  background-color: #536b78ff;
+  padding-right: 34vh;
+  padding-left: 35vh;
+}
+
+.submit-form {
+  background-color: rgb(164, 178, 185);
+  border-radius: 12px;
+  padding: 40px;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  color: #cee5f2ff;
+}
+
+.amount-label {
+  margin-right: 58px;
+}
+
+.desc-label {
+  margin-right: 2vh;
+}
+
+.amount-input {
+  background-color: blanchedalmond;
+  margin-top: 0px;
+}
+
+.desc-input {
+  background-color: blanchedalmond;
+}
+
+.submit-btn {
+  padding: 90px;
+  padding-bottom: 20px;
+}
+
+.submit-btn:hover {
+  background-color: cornflowerblue;
+}

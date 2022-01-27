@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { backendAddress } from '../../dtos/backend-address';
 import { User } from '../../dtos/dtos';
+import './reimbursement-submit.css';
 
 export default function ReimbursementSubmit(props: { emp: User }) {
   const amountInput = useRef(null);
@@ -33,16 +34,43 @@ export default function ReimbursementSubmit(props: { emp: User }) {
 
   return (
     <>
-      <h2>Submit a Reimbursement</h2>
-      <form onSubmit={submitReimbursement}>
-        <label htmlFor='amountInput'>Amount</label>
-        <input type='number' id='amountInput' ref={amountInput} />
+      <div className='reim-submit-wrapper'>
+        <div className='reim-submit-title'>
+          <h3>Submit a Reimbursement</h3>
+        </div>
+        <div className='submit-form'>
+          <form onSubmit={submitReimbursement}>
+            <div>
+              <label htmlFor='amountInput' className='amount-label'>
+                Amount
+              </label>
+              <input
+                type='number'
+                id='amountInput'
+                ref={amountInput}
+                className='amount-input'
+              />
+            </div>
 
-        <label htmlFor='descInput'>Description</label>
-        <input type='text' id='descInput' ref={descInput} />
-
-        <button type='submit'>Submit Reimbursement</button>
-      </form>
+            <div>
+              <label htmlFor='descInput' className='desc-label'>
+                Description
+              </label>
+              <input
+                type='text'
+                id='descInput'
+                ref={descInput}
+                className='desc-input'
+              />
+            </div>
+            <div>
+              <button type='submit' className='submit-btn'>
+                Submit Reimbursement
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 }

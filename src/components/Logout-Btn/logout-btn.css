@@ -5,11 +5,11 @@
   padding-left: 70px;
   padding-right: 70px;
   font-size: large;
-  background-color: rgb(253, 253, 181);
+  background-color: #accbe1ff;
   box-shadow: 3px 3px rgb(46, 46, 46);
   border-radius: 6px;
 }
 
 .logout-btn:hover {
-  background-color: rgb(250, 250, 135);
+  background-color: #536b78ff;
 }

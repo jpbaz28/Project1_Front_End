@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto&family=Rock+3D&display=swap');
 
+/* Manager page CSS */
 .manager-page-wrapper {
   display: flex;
   flex-shrink: 1;
@@ -13,13 +14,13 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(206, 206, 206);
+  background-color: #7c98b3ff;
   width: 1000px;
   height: 140px;
   border-radius: 40px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  color: darkslategray;
+  color: #637081ff;
   font-size: x-large;
 }
 
@@ -30,15 +31,84 @@
 }
 
 .manager-welcome {
-  color: rgb(17, 17, 17);
+  color: #cee5f2ff;
 }
 
 .nav-bar {
   width: 1000px;
-  justify-content: center;
+  justify-content: space-evenly;
+  background-color: #536b78ff;
+  padding-bottom: 1vh;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .details-link {
+  margin-right: 50px;
+  font-size: x-large;
+  border: 2px;
+  border-radius: 6px;
+  background-color: #accbe1ff;
+  color: black;
+  padding: 12px;
+  text-decoration: none;
+  box-shadow: 3px 3px rgb(32, 32, 32);
+}
+
+.details-link:link {
+  color: black;
+}
+
+.details-link:hover {
+  background-color: rgb(64, 64, 255);
+}
+
+/* Employee Page CSS Starts here */
+
+.emp-page-wrapper {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+}
+.emp-page-header {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: #7c98b3ff;
+  width: 1000px;
+  height: 140px;
+  border-radius: 40px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: x-large;
+}
+.emp-title {
+  margin-bottom: 0px;
+  margin-top: 4px;
+  color: #cee5f2ff;
+}
+
+.emp-welcome {
+  margin-top: 0px;
+  color: #cee5f2ff;
+}
+
+.emp-reim-submit {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: #637081ff;
+  width: 1000px;
+  height: 50vh;
+  font-size: x-large;
+}
+
+.past-link {
   margin-right: 50px;
   font-size: x-large;
   border: 2px;
@@ -49,20 +119,20 @@
   box-shadow: 3px 3px rgb(32, 32, 32);
 }
 
-.details-link:link {
+.past-link:link {
   color: black;
 }
 
-.details-link:visited {
+.past-link:visited {
   color: brown;
 }
 
-.details-link:hover {
+.past-link:hover {
   font-size: xx-large;
   text-transform: capitalize;
   background-color: rgb(64, 64, 255);
 }
 
-.details-link:active {
+.past-link:active {
   color: red;
 }

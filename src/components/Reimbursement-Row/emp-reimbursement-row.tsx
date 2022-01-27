@@ -9,7 +9,7 @@ export default function EmpReimbursementRow(props: { reim: Reimbursement }) {
       <tr>
         <td>{username}</td>
         <td>${amount}</td>
-        <td>{dateObj.toLocaleString()}</td>
+        <td>{dateObj.toLocaleDateString()}</td>
         <td>{comment}</td>
         {isPending ? (
           <>
