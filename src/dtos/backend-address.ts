@@ -1,1 +1,2 @@
-export const backendAddress = 'http://localhost:5000';
+export const backendAddress =
+  'https://bertrand-reimbursesystem-backend.azurewebsites.net';
