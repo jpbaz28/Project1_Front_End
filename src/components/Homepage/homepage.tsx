@@ -36,7 +36,7 @@ export default function Homepage(props: {
                 className='details-link'>
                 Expenditure Details
               </Link>
-              <LogoutBtn />
+              <LogoutBtn nav={navigate} />
             </nav>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function Homepage(props: {
               className='details-link'>
               Past Submittals
             </Link>
-            <LogoutBtn />
+            <LogoutBtn nav={navigate} />
           </nav>
         </div>
       </div>

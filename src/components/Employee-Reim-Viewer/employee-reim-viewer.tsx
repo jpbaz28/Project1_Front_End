@@ -59,7 +59,7 @@ export default function EmployeeReimViewer(props: { employee: User }) {
         <button onClick={goBackHome} className='home-btn'>
           Home Page
         </button>
-        <LogoutBtn />
+        <LogoutBtn nav={navigate} />
       </nav>
     </>
   );

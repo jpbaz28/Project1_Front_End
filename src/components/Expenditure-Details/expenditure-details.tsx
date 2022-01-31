@@ -81,7 +81,7 @@ export default function ExpenditureDetails() {
           <button onClick={backHome} className='home-btn'>
             Home Page
           </button>
-          <LogoutBtn />
+          <LogoutBtn nav={navigate} />
         </nav>
       </div>
     </>

@@ -1,8 +1,9 @@
 import './logout-btn.css';
 
-export default function LogoutBtn() {
+export default function LogoutBtn(props: { nav: Function }) {
   function logout() {
     sessionStorage.clear();
+    props.nav('/login');
     window.location.reload();
   }
 
