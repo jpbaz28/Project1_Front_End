@@ -45,15 +45,15 @@ export default function ExpenditureDetails() {
     }
 
     //loops through userSpending array to find the user with the highest total spending
-    for (let i = 0; i < userSpending.length; i++) {
-      if (userSpending[i].userTotal > currentHigh) {
-        currentHigh = userSpending[i].userTotal;
-        costUser = userSpending[i].username;
+    for (const user of userSpending) {
+      if (user.userTotal > currentHigh) {
+        currentHigh = user.userTotal;
+        costUser = user.username;
       }
     }
 
-    const average = (total / totalNumOfReims).toFixed(2);
-    setAverage(average);
+    const calcAverage = (total / totalNumOfReims).toFixed(2);
+    setAverage(calcAverage);
     setHighCostUser(costUser);
   }
 

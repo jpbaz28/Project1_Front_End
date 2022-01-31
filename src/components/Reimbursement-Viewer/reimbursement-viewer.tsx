@@ -11,8 +11,8 @@ export default function ReimbursementViewer(props) {
     const response: Response = await fetch(`${backendAddress}/reimbursements`, {
       method: 'GET',
     });
-    const reimburses: Reimbursement[] = await response.json();
-    setReimburses(reimburses);
+    const reims: Reimbursement[] = await response.json();
+    setReimburses(reims);
   }
 
   useEffect(() => {
